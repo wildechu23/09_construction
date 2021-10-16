@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 struct profile {
 	char name[16];
@@ -23,7 +24,10 @@ struct profile * make_profile(char *nm, int sz, int w, int l) {
 }
 
 int main() {
-	struct profile *bob = make_profile("bob",3,3,5);
+	srand(time(NULL));
+	int wins = rand()/100000000;
+	int losses = rand()/100000000;
+	struct profile *bob = make_profile("bob",3,wins,losses);
 	print_profile(bob);
 
 	free(bob);
